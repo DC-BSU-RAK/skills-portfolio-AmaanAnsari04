@@ -144,7 +144,7 @@ def checkAnswer(): #checks answers for if they are correct, incorrect or invalid
             attempt += 1
             messagebox.showwarning("Incorrect", "Try again!")
         else:
-            messagebox.showinfo("Game Over", f" Maybe this is not for you. The correct answer was {Answer}")
+            messagebox.showinfo("Wrong again!", f"The correct answer was {Answer}")
             nextQuestion()
 
 def nextQuestion(): #func to increase question number and show next question
