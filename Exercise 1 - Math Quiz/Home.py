@@ -58,15 +58,15 @@ def Instructions_page():  #instructions page
 
 def Number_range(level): #random number generator with the range separated by difficulty level
     if level == "Easy":
-        return random.randint(1, 100)
+        return random.randint(1, 9)
     elif level == "Normal":
-        return random.randint(100, 1000)
+        return random.randint(10, 99)
     elif level == "Hard":
-        return random.randint(1000, 10000)
+        return random.randint(100, 999)
 
 def random_BIDMAS(level): #random math operation generator based on difficulty level
     if level == "Easy":
-        return random.choice(["+", "-"])
+        return random.choice(["+", "-", "*"])
     elif level == "Normal":
         return random.choice(["+", "-", "*", "/"])
     elif level == "Hard":
@@ -91,7 +91,7 @@ def displayProblem(): #function to show users the questions
 
     #template for questions and the answers
     if BIDMAS == "^":
-        exponent = random.randint(0, 5)
+        exponent = random.randint(-5, 5)
         question = f"{num1} ^ {exponent} = "
         Answer = num1 ** exponent
     elif BIDMAS == "+":
@@ -131,13 +131,13 @@ def checkAnswer(): #checks answers for if they are correct, incorrect or invalid
         messagebox.showwarning("Invalid", "Please enter a number!")
         return
 
-    if user_answer == Answer: #allows for 2 tries
+    if abs(user_answer - Answer) < 0.01: #allows for 2 tries
         correct_answer += 1
         if attempt == 1:
             score += 10
         else:
             score += 5
-        messagebox.showinfo("Correct!")
+        messagebox.showinfo("Correct","That's right!")
         nextQuestion()
     else:
         if attempt == 1:
@@ -158,9 +158,41 @@ def nextQuestion(): #func to increase question number and show next question
 def showResults(): #shows the final results and has buttons to go back to the main menu or leave
     new_window()   
 
+    #grades based on their sscore
+    if score >= 95:
+        grade = "A+"
+    elif score >= 90:
+        grade = "A"
+    elif score >= 80:
+        grade = "B"
+    elif score >= 70:
+        grade = "C"
+    elif score >= 60:
+        grade = "D"
+    elif score >= 50:
+        grade = "E"
+    else:
+        grade = "F"
+
+    #grades based on their score
+    if score >= 90:
+        praise = "Great Job!"
+    elif score >= 70:
+        praise = "Good Work!"
+    elif score >= 60:
+        praise = "Not bad"
+    elif score >= 50:
+        praise = "Could be better"
+    else:
+        praise = "Better luck next time"
+
     Label(root, text=f"You got {correct_answer}/10 questions correct!", font=("Arial", subheader, "bold"), bg="#A2D729", fg="#FFFFFF").pack(pady=40)
 
     Label(root, text=f"You earned {score} points!", font=("Arial", subheader, "bold"), bg="#A2D729", fg="black").pack(pady=20)
+
+    Label(root, text=f"You got a {grade} ", font=("Arial", subheader, "bold"), bg="#A2D729", fg="black").pack(pady=20)
+
+    Label(root, text=praise, font=("Arial", subheader, "bold"), bg="#A2D729", fg="black").pack(pady=20)
 
     Button(root, text="Main Menu", font=("Arial", button_size), bg="#7d0aca", fg="white", command=Main_Menu).pack(pady=20)
 
