@@ -13,6 +13,9 @@ pygame.mixer.music.load("Exercise 1 - Math Quiz/Animal Crossing_ New Horizons So
 pygame.mixer.music.play(-1) #loops music
 pygame.mixer.music.set_volume(0.5) #volume 0-1
 
+correct_sound = pygame.mixer.Sound("Exercise 1 - Math Quiz/correct.mp3") #audio for right and wrong answers
+wrong_sound = pygame.mixer.Sound("Exercise 1 - Math Quiz/wrong.mp3")
+
 header = 40 #font size for header text
 subheader = 20 #font size for subheader text
 button_size = 15 #font size for buttons
@@ -132,6 +135,7 @@ def checkAnswer(): #checks answers for if they are correct, incorrect or invalid
         return
 
     if abs(user_answer - Answer) < 0.01: #allows for 2 tries
+        correct_sound.play() #plays audio when answered correctly
         correct_answer += 1
         if attempt == 1:
             score += 10
@@ -140,6 +144,7 @@ def checkAnswer(): #checks answers for if they are correct, incorrect or invalid
         messagebox.showinfo("Correct","That's right!")
         nextQuestion()
     else:
+        wrong_sound.play() #plays audio when answered incorrectly
         if attempt == 1:
             attempt += 1
             messagebox.showwarning("Incorrect", "Try again!")
