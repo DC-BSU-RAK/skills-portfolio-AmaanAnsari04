@@ -128,7 +128,7 @@ def checkAnswer(): #checks answers for if they are correct, incorrect or invalid
     try:
         user_answer = float(user_input)
     except ValueError:
-        messagebox.showwarning("Invalid", "Please enter a number!")
+        messagebox.showwarning("Invalid", "Please enter a number! ")
         return
 
     if abs(user_answer - Answer) < 0.01: #allows for 2 tries
