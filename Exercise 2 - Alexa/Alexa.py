@@ -43,7 +43,6 @@ def speak(text):
         engine.runAndWait()
         engine.stop()
 
-
     #runs in separate thread to stop tts audio freezing
     thread = threading.Thread(target=_speak, daemon=True)
     thread.start()
@@ -62,9 +61,7 @@ for frame in (mainmenu, jokeScreen, instructionsScreen): #makes frames fit whole
 
 #Creating title screen text and buttons
 Label(mainmenu, text="Alexa's Dad Joke Collection", font=("Arial", 38, "bold"), fg="#034465", bg="#66b3da").pack(pady=80)
-
 Button(mainmenu, text="Start", font=("Arial", 20),fg="#034465",bg="#B9DDF0", command=lambda: showFrame(jokeScreen)).pack(pady=20)
-
 Button(mainmenu, text="Instructions", font=("Arial", 20), fg="#FBFBFB", bg="#07146B", command=lambda: showFrame(instructionsScreen)).pack(pady=20)
 
 #function to show joke screen
@@ -122,16 +119,14 @@ Label(instructionsScreen, text="Instructions", font=("Arial", 32, "bold"), fg="#
 
 Label(
     instructionsScreen,
-    text=(                                                          #instructions to be shown
-        "• Click 'Alexa tell me a Joke' to see a setup.\n\n"
-        "• Click the 'Speak' button to hear it read out loud.\n\n"
-        "• Click 'Show Punchline' to reveal the joke.\n\n"
-        "• Click 'Next Joke' to get another one.\n\n"
-        "• Use 'Back to Menu' to return to the home screen."),
-        font=("Arial", 16), bg="#66b3da", fg="#034465", justify="left").pack(pady=20)
+    text=("• Press on 'Alexa tell me a Joke' to see a setup.\n\n"
+          "• Press the 'Speak' button to hear it read out loud.\n\n"
+          "• Press 'Show Punchline' to reveal the joke.\n\n"
+          "• Press 'Next Joke' to get another one.\n\n"
+          "• Use 'Back to Menu' to return to the home screen."),
+          font=("Arial", 16), bg="#66b3da", fg="#034465", justify="left").pack(pady=20)  #instructions to be shown
 
 Button(instructionsScreen, text="Back",fg="#C1DDEB", bg="#021f2e", font=("Arial", 18), command=lambda: showFrame(mainmenu)).pack(pady=30) #return to menu 
 
 showFrame(mainmenu) #start on title screen
-
 main.mainloop()
