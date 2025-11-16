@@ -68,9 +68,9 @@ for frame in (mainmenu, jokeScreen, instructionsScreen): #makes frames fit whole
 #Creating title screen text and buttons
 Label(mainmenu, text="Alexa's Dad Joke Collection", font=("Arial", 38, "bold"), fg="#034465", bg="#66b3da").pack(pady=80)
 
-Button(mainmenu, text="Start", font=("Arial", 20), fg="#034465", command=lambda: showFrame(jokeScreen)).pack(pady=20)
+Button(mainmenu, text="Start", font=("Arial", 20), fg="#034465",bg="#B9DDF0", command=lambda: showFrame(jokeScreen)).pack(pady=20)
 
-Button(mainmenu, text="Instructions", font=("Arial", 20), fg="#034465", command=lambda: showFrame(instructionsScreen)).pack(pady=20)
+Button(mainmenu, text="Instructions", font=("Arial", 20), fg="#FBFBFB", bg="#07146B", command=lambda: showFrame(instructionsScreen)).pack(pady=20)
 
 #function to show joke screen
 def showJoke():
@@ -107,7 +107,7 @@ setupRow.pack(pady=10)
 setupLabel = Label(setupRow, text="", font=("Arial", 16), wraplength=500, bg="#66b3da", fg="#000022")
 setupLabel.pack(side="left") #button on the left side
 
-speakButton = Button(setupRow, text="🔊 Speak", font=("Arial", 10), command=lambda: speak(currentJoke[0]) if currentJoke else None)
+speakButton = Button(setupRow, text="Speak", font=("Arial", 10), bg="#DBE162", command=lambda: speak(currentJoke[0]) if currentJoke else None)
 speakButton.pack_forget() #is hidden
 
 #adds punchline and speak button next to each other
@@ -118,14 +118,14 @@ punchlineRow.pack(pady=10)
 punchlineLabel = Label(punchlineRow, text="", font=("Arial", 16, "italic"), wraplength=500, bg="#66b3da", fg="#034465")
 punchlineLabel.pack(side="left")
 
-punchlineSpeak = Button(punchlineRow, text="🔊 Speak", font=("Arial", 10), command=lambda: speak(currentJoke[1]) if currentJoke else None)
+punchlineSpeak = Button(punchlineRow, text="Speak", font=("Arial", 10), bg="#DBE162", command=lambda: speak(currentJoke[1]) if currentJoke else None)
 punchlineSpeak.pack_forget() #ishidden
 
 #buttons to navigate joke screen
-Button(jokeScreen, text="Alexa tell me a Joke", font=("Arial", 14), command=showJoke).pack(pady=10) #displays joke
-Button(jokeScreen, text="Show Punchline", font=("Arial", 14), command=showPunchline).pack(pady=10)  #shows the punchline
-Button(jokeScreen, text="Next Joke", font=("Arial", 14),command=showJoke).pack(pady=10) #shows new joke
-Button(jokeScreen, text="Back to Menu", font=("Arial", 14), command=lambda: showFrame(mainmenu)).pack(pady=20) #returns back to menu
+Button(jokeScreen, text="Alexa tell me a Joke", font=("Arial", 14), bg="#00293D", fg="#64c5ee", command=showJoke).pack(pady=10) #displays joke
+Button(jokeScreen, text="Show Punchline", font=("Arial", 14), bg="#64c5ee", fg="#00293D", command=showPunchline).pack(pady=10)  #shows the punchline
+Button(jokeScreen, text="Next Joke", font=("Arial", 14), bg="#00293D", fg="#64c5ee", command=showJoke).pack(pady=10) #shows new joke
+Button(jokeScreen, text="Back to Menu", font=("Arial", 14), bg="#64c5ee", fg="#00293D", command=lambda: showFrame(mainmenu)).pack(pady=20) #returns back to menu
 
 #instructions screen
 Label(instructionsScreen, text="Instructions", font=("Arial", 32, "bold"), fg="#034465", bg="#66b3da").pack(pady=40)
