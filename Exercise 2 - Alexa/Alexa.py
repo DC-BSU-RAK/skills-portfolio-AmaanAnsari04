@@ -11,12 +11,9 @@ main.title("Alexa Joke Teller")
 
 pygame.mixer.init()
 #setting up background music
-try:
-    pygame.mixer.music.load("Exercise 2 - Alexa/SV- Cloud Country.mp3")
-    pygame.mixer.music.play(-1)  #loops music
-    pygame.mixer.music.set_volume(0.3)  #volume 0-1
-except pygame.error:
-    print("Background music not found")
+pygame.mixer.music.load("Exercise 2 - Alexa/SV- Cloud Country.mp3")
+pygame.mixer.music.play(-1)  #loops music
+pygame.mixer.music.set_volume(0.3)  #volume 0-1
 
 #loads the jokes from text file
 def Joker(filename="Exercise 2 - Alexa/randomJokes.txt"):
@@ -107,7 +104,7 @@ setupRow = Frame(jokeScreen, bg="#66b3da")
 setupRow.pack(pady=10)
 
 #displays joke setup
-setupLabel = Label(setupRow, text="", font=("Arial", 16), wraplength=500, bg="#66b3da", fg="#034465")
+setupLabel = Label(setupRow, text="", font=("Arial", 16), wraplength=500, bg="#66b3da", fg="#000022")
 setupLabel.pack(side="left") #button on the left side
 
 speakButton = Button(setupRow, text="🔊 Speak", font=("Arial", 10), command=lambda: speak(currentJoke[0]) if currentJoke else None)
@@ -137,7 +134,7 @@ Label(
     instructionsScreen,
     text=(                                                          #instructions to be shown
         "• Click 'Alexa tell me a Joke' to see a setup.\n\n"
-        "• Click the 'Speak' button to hear it read aloud.\n\n"
+        "• Click the 'Speak' button to hear it read out loud.\n\n"
         "• Click 'Show Punchline' to reveal the joke.\n\n"
         "• Click 'Next Joke' to get another one.\n\n"
         "• Use 'Back to Menu' to return to the home screen."),
