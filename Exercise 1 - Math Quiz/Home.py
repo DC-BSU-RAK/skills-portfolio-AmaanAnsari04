@@ -1,5 +1,6 @@
 from tkinter import *
 from tkinter import messagebox
+from PIL import ImageTk
 import random
 import pygame 
 
@@ -7,6 +8,8 @@ root = Tk()
 root.title("Math Quiz")
 root.geometry("1200x700")
 root.config(bg="#A2D729") #main background colour
+
+root.iconphoto(False, ImageTk.PhotoImage(file="Exercise 1 - Math Quiz/graduation-cap.png"))
 
 pygame.mixer.init()
 pygame.mixer.music.load("Exercise 1 - Math Quiz/Animal Crossing_ New Horizons Soundtrack - 7AM.mp3")
