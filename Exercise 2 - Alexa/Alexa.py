@@ -1,13 +1,16 @@
 from tkinter import *
+from PIL import ImageTk
 import random
 import pygame
 import pyttsx3
 import threading
 
-main = Tk()
-main.geometry("800x600") #window size
-main['bg'] = "#66b3da"
-main.title("Alexa Joke Teller")
+root = Tk()
+root.geometry("800x600") #window size
+root['bg'] = "#66b3da"
+root.title("Alexa Joke Teller")
+
+root.iconphoto(False, ImageTk.PhotoImage(file="Exercise 2 - Alexa/wig.png"))
 
 pygame.mixer.init()
 #setting up background music
@@ -21,8 +24,6 @@ def Joker(filename="Exercise 2 - Alexa/randomJokes.txt"):
     with open(filename, "r", encoding="utf-8") as file:
         for line in file:
             line = line.strip()
-            if not line:  #skip empty lines
-                continue
             if "?" in line: #splits after question mark
                 setup, punchline = line.split("?", 1)
                 jokes.append((setup + "?", punchline.strip()))
@@ -52,9 +53,9 @@ def showFrame(frame):
     frame.tkraise()
 
 #creates 3 screens for main menu, jokes and instructions
-mainmenu = Frame(main, bg="#66b3da")
-jokeScreen = Frame(main, bg="#66b3da")
-instructionsScreen = Frame(main, bg="#66b3da")
+mainmenu = Frame(root, bg="#66b3da")
+jokeScreen = Frame(root, bg="#66b3da")
+instructionsScreen = Frame(root, bg="#66b3da")
 
 for frame in (mainmenu, jokeScreen, instructionsScreen): #makes frames fit whole screen
     frame.place(relwidth=1, relheight=1)
@@ -129,4 +130,4 @@ Label(
 Button(instructionsScreen, text="Back",fg="#C1DDEB", bg="#021f2e", font=("Arial", 18), command=lambda: showFrame(mainmenu)).pack(pady=30) #return to menu 
 
 showFrame(mainmenu) #start on title screen
-main.mainloop()
+root.mainloop()
